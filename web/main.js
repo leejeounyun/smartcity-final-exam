@@ -47,12 +47,12 @@ async function fetchJson(path) {
 }
 
 async function loadData() {
-  return fetchJson("../data/processed/summary.json");
+  return fetchJson("../processed/summary.json");
 }
 
 async function ensureRegionData(region) {
   if (regionCache[region]) return regionCache[region];
-  const base = `../data/processed/${region}`;
+  const base = `../processed/${region}`;
   const payload = {
     boundary: await fetchJson(`${base}/${region}_boundary.geojson`),
     buildings: await fetchJson(`${base}/${region}_buildings.geojson`),
