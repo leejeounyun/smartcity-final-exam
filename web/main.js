@@ -36,6 +36,7 @@ let map = null;
 let boundaryLayer = null;
 let thematicLayer = null;
 let isochroneLayer = null;
+const regionCache = {};
 
 async function fetchJson(path) {
   const response = await fetch(path);
@@ -46,23 +47,21 @@ async function fetchJson(path) {
 }
 
 async function loadData() {
-  const summary = await fetchJson("../data/processed/summary.json");
-  const dataset = {};
+  return fetchJson("../data/processed/summary.json");
+}
 
-  for (const region of Object.keys(REGION_LABELS)) {
-    const base = `../data/processed/${region}`;
-    dataset[region] = {
-      summary: summary[region],
-      boundary: await fetchJson(`${base}/${region}_boundary.geojson`),
-      landuse: await fetchJson(`${base}/${region}_landuse.geojson`),
-      buildings: await fetchJson(`${base}/${region}_buildings.geojson`),
-      sgis: await fetchJson(`${base}/${region}_sgis.geojson`),
-      isochrones: await fetchJson(`${base}/${region}_isochrones.geojson`),
-      stations: await fetchJson(`${base}/${region}_reachable_stations.geojson`),
-    };
-  }
-
-  return dataset;
+async function ensureRegionData(region) {
+  if (regionCache[region]) return regionCache[region];
+  const base = `../data/processed/${region}`;
+  const payload = {
+    boundary: await fetchJson(`${base}/${region}_boundary.geojson`),
+    buildings: await fetchJson(`${base}/${region}_buildings.geojson`),
+    sgis: await fetchJson(`${base}/${region}_sgis.geojson`),
+    isochrones: await fetchJson(`${base}/${region}_isochrones.geojson`),
+    stations: await fetchJson(`${base}/${region}_reachable_stations.geojson`),
+  };
+  regionCache[region] = payload;
+  return payload;
 }
 
 function initMap() {
@@ -213,9 +212,10 @@ function clearLayers() {
   });
 }
 
-function renderMap(region, minute) {
+async function renderMap(region, minute) {
   clearLayers();
-  const dataset = appData[region];
+  mapState.textContent = "지도 데이터 불러오는 중";
+  const dataset = await ensureRegionData(region);
 
   boundaryLayer = L.geoJSON(dataset.boundary, {
     style: {
@@ -297,13 +297,18 @@ function renderMap(region, minute) {
   map.fitBounds(boundaryLayer.getBounds(), { padding: [24, 24] });
 }
 
-function render() {
+async function render() {
   const region = regionSelect.value;
   const minute = timeSelect.value;
   updateStats(region, minute);
   updateCompare(minute);
   renderCurveChart();
-  renderMap(region, minute);
+  try {
+    await renderMap(region, minute);
+  } catch (error) {
+    console.error(error);
+    mapState.textContent = "지도 데이터 로드 실패";
+  }
 }
 
 layerButtons.forEach((button) => {
@@ -320,8 +325,12 @@ timeSelect.addEventListener("change", render);
 
 async function main() {
   initMap();
-  appData = await loadData();
-  render();
+  const summary = await loadData();
+  appData = {
+    pangyo: { summary: summary.pangyo },
+    cheongna: { summary: summary.cheongna },
+  };
+  await render();
 }
 
 main().catch((error) => {
