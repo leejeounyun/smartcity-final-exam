@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>판교 vs 청라 업무지구 비교분석</title>
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="hero">
+      <p class="eyebrow">Smart City Final Exam</p>
+      <h1>판교 제1테크노밸리 vs 청라 국제업무지구</h1>
+      <p class="hero-copy">
+        토지이용, 교통 접근성, 인구·종사자 구조를 같은 기준으로 비교해
+        수도권 업무지구의 성공과 부진 원인을 읽어내는 데이터 기반 분석 시스템
+      </p>
+    </header>
+
+    <main class="layout">
+      <section class="panel controls">
+        <h2>분석 설정</h2>
+
+        <label for="region-select">지도 중심 지역</label>
+        <select id="region-select">
+          <option value="pangyo">판교 제1테크노밸리</option>
+          <option value="cheongna">청라 국제업무지구</option>
+        </select>
+
+        <label for="time-select">등시시간권 기준</label>
+        <select id="time-select">
+          <option value="30">30분</option>
+          <option value="60">60분</option>
+        </select>
+
+        <div class="legend">
+          <h3>분석 레이어</h3>
+          <button type="button" data-layer="landuse" class="layer-button active">토지이용 / 건축물</button>
+          <button type="button" data-layer="transport" class="layer-button">교통 접근성</button>
+          <button type="button" data-layer="demographics" class="layer-button">인구·종사자</button>
+        </div>
+
+        <div class="notes-box">
+          <h3>경계 원칙</h3>
+          <p>
+            두 지역 모두 공식 계획도와 도로·블록 경계를 함께 고려한 분석용 경계를 사용했다.
+          </p>
+        </div>
+      </section>
+
+      <section class="panel map-panel">
+        <div class="panel-header">
+          <h2>지도 시각화</h2>
+          <span id="map-state">데이터 불러오는 중</span>
+        </div>
+        <div id="map"></div>
+      </section>
+
+      <section class="panel stats-panel">
+        <div class="panel-header">
+          <h2>핵심 지표</h2>
+          <span id="selected-region-label">-</span>
+        </div>
+        <div class="stats-grid">
+          <article class="stat-card">
+            <h3>핵심역</h3>
+            <p class="stat-value compact" id="core-station-value">-</p>
+          </article>
+          <article class="stat-card">
+            <h3>30/60분 도달 종사자</h3>
+            <p class="stat-value" id="workers-value">-</p>
+          </article>
+          <article class="stat-card">
+            <h3>30/60분 도달 인구</h3>
+            <p class="stat-value" id="population-value">-</p>
+          </article>
+          <article class="stat-card">
+            <h3>구역 내 종사자</h3>
+            <p class="stat-value" id="district-employment-value">-</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="panel compare-panel">
+        <div class="panel-header">
+          <h2>판교 vs 청라 비교</h2>
+          <span>같은 기준 / 같은 시간대</span>
+        </div>
+        <div class="compare-grid" id="compare-grid"></div>
+      </section>
+
+      <section class="panel chart-panel">
+        <div class="panel-header">
+          <h2>누적 접근성 곡선</h2>
+          <span>0~60분</span>
+        </div>
+        <svg id="curve-chart" viewBox="0 0 640 260" preserveAspectRatio="none" aria-label="접근성 곡선"></svg>
+      </section>
+
+      <section class="panel notes-panel">
+        <h2>해석 메모</h2>
+        <ul id="analysis-notes">
+          <li>토지이용은 공식 토지이용계획공간정보를 클립 후 범주화했다.</li>
+          <li>건축물 구성은 건축물대장 표제부의 주용도와 연면적을 기준으로 집계했다.</li>
+          <li>등시시간권은 지하철 네트워크 상 최단시간과 역 주변 600m 서비스권을 결합해 근사했다.</li>
+        </ul>
+      </section>
+    </main>
+  </div>
+
+  <script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
+  <script src="./main.js"></script>
+</body>
+</html>

@@ -1,0 +1,216 @@
+{
+  "pangyo": {
+    "landuse_ratio": {
+      "주거": 0.8970383383925847,
+      "기반시설": 0.09901075426100633,
+      "녹지": 0.003950907346408982
+    },
+    "building_use_ratio_by_floor_area": {
+      "주거": 0.810230512523818,
+      "기타": 0.0751823493958207,
+      "상업/근생": 0.05779329219441654,
+      "교육연구": 0.046625350962836445,
+      "업무": 0.007736330470839255,
+      "산업/물류": 0.0024321644522691073
+    },
+    "sgis_totals": {
+      "population": 266.86006479427147,
+      "employment": 42967.94953355359
+    },
+    "transport": {
+      "core_station_name": "판교",
+      "core_station_lines": [
+        "경강선",
+        "신분당선"
+      ],
+      "core_station_node_ids": [
+        26,
+        824
+      ],
+      "isochrone_totals": {
+        "30": {
+          "population": 159115.15238984887,
+          "employment": 192041.66146180453
+        },
+        "60": {
+          "population": 159115.15238984887,
+          "employment": 192041.66146180453
+        }
+      },
+      "accessibility_curve": [
+        {
+          "minute": 0,
+          "population": 17225.2268872777,
+          "employment": 42202.08145153898
+        },
+        {
+          "minute": 5,
+          "population": 63139.29114883366,
+          "employment": 71138.79495683976
+        },
+        {
+          "minute": 10,
+          "population": 96308.41993428429,
+          "employment": 93728.75265882729
+        },
+        {
+          "minute": 15,
+          "population": 159115.15238984308,
+          "employment": 192041.6614617851
+        },
+        {
+          "minute": 20,
+          "population": 159115.15238984308,
+          "employment": 192041.6614617851
+        },
+        {
+          "minute": 25,
+          "population": 159115.15238984308,
+          "employment": 192041.6614617851
+        },
+        {
+          "minute": 30,
+          "population": 159115.15238984308,
+          "employment": 192041.6614617851
+        },
+        {
+          "minute": 35,
+          "population": 159115.15238984308,
+          "employment": 192041.6614617851
+        },
+        {
+          "minute": 40,
+          "population": 159115.15238984308,
+          "employment": 192041.6614617851
+        },
+        {
+          "minute": 45,
+          "population": 159115.15238984308,
+          "employment": 192041.6614617851
+        },
+        {
+          "minute": 50,
+          "population": 159115.15238984308,
+          "employment": 192041.6614617851
+        },
+        {
+          "minute": 55,
+          "population": 159115.15238984308,
+          "employment": 192041.6614617851
+        },
+        {
+          "minute": 60,
+          "population": 159115.15238984308,
+          "employment": 192041.6614617851
+        }
+      ]
+    }
+  },
+  "cheongna": {
+    "landuse_ratio": {
+      "상업": 0.7682533027383059,
+      "기타": 0.1308347928392334,
+      "기반시설": 0.07519482270508145,
+      "녹지": 0.02543022119660768,
+      "주거": 0.0002868605207714765
+    },
+    "building_use_ratio_by_floor_area": {
+      "주거": 0.546532558918182,
+      "업무": 0.20367960641876495,
+      "상업/근생": 0.07653077016081776,
+      "산업/물류": 0.06850675563648219,
+      "기타": 0.06616236455447597,
+      "교육연구": 0.0385879443112772
+    },
+    "sgis_totals": {
+      "population": 1778.0987130561334,
+      "employment": 1378.3166791015788
+    },
+    "transport": {
+      "core_station_name": "청라국제도시",
+      "core_station_lines": [
+        "공항철도"
+      ],
+      "core_station_node_ids": [
+        313
+      ],
+      "isochrone_totals": {
+        "30": {
+          "population": 246410.26910662194,
+          "employment": 62712.82964510092
+        },
+        "60": {
+          "population": 255203.59536123852,
+          "employment": 73461.62259973178
+        }
+      },
+      "accessibility_curve": [
+        {
+          "minute": 0,
+          "population": 215.29437055313795,
+          "employment": 861.5997970614103
+        },
+        {
+          "minute": 5,
+          "population": 6412.594754493644,
+          "employment": 3297.20483973921
+        },
+        {
+          "minute": 10,
+          "population": 6412.594754493644,
+          "employment": 3297.20483973921
+        },
+        {
+          "minute": 15,
+          "population": 20978.690739728816,
+          "employment": 5539.458845842851
+        },
+        {
+          "minute": 20,
+          "population": 100751.15707349416,
+          "employment": 27148.14364227734
+        },
+        {
+          "minute": 25,
+          "population": 193874.4888693747,
+          "employment": 45853.54475412755
+        },
+        {
+          "minute": 30,
+          "population": 246410.26910661272,
+          "employment": 62712.829645102356
+        },
+        {
+          "minute": 35,
+          "population": 255203.59536121972,
+          "employment": 73461.62259973073
+        },
+        {
+          "minute": 40,
+          "population": 255203.59536121972,
+          "employment": 73461.62259973073
+        },
+        {
+          "minute": 45,
+          "population": 255203.59536121972,
+          "employment": 73461.62259973073
+        },
+        {
+          "minute": 50,
+          "population": 255203.59536121972,
+          "employment": 73461.62259973073
+        },
+        {
+          "minute": 55,
+          "population": 255203.59536121972,
+          "employment": 73461.62259973073
+        },
+        {
+          "minute": 60,
+          "population": 255203.59536121972,
+          "employment": 73461.62259973073
+        }
+      ]
+    }
+  }
+}
